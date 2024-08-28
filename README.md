@@ -31,7 +31,7 @@ This console application is designed to export data from a Microsoft SQL Server 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/DataExport.git
+   git clone https://github.com/konzab/DataExport.git
    cd DataExport
    ```
 
