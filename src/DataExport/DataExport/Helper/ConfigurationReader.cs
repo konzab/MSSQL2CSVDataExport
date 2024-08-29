@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -15,5 +16,7 @@ namespace DataExport.Helper
         public static string SERVERNAME => ConfigurationManager.AppSettings["ServerName"] != null ? ConfigurationManager.AppSettings["ServerName"].ToString() : string.Empty;
 
         public static string GetDatabaseConnectionString() => $@"Data Source={SERVERNAME};Initial Catalog=Members;User ID={USERNAME};Password={PASSWORD}";
+
+        public static SqlConnection GetSqlConnection() => new SqlConnection(ConfigurationReader.GetDatabaseConnectionString());
     }
 }

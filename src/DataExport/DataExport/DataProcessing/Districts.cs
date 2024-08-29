@@ -28,11 +28,12 @@ namespace DataExport.DataProcessing
             {
                 IEnumerable<District> sqldump = new List<District>();
                 string query = "SELECT DISTINCT [strDistricts_Description] as Name FROM [dbo].[mrefDistricts] ORDER BY [strDistricts_Description]";
-                using (SqlConnection conn = new SqlConnection(ConfigurationReader.GetDatabaseConnectionString()))
+                using (SqlConnection conn = ConfigurationReader.GetSqlConnection())
                 {
                     conn.Open();
                     sqldump = await conn.QueryAsync<District>(query, CommandType.Text);
                 }
+
                 districtList = sqldump
                     .Where(item => !string.IsNullOrEmpty(item.Name))
                     .Select(item => item.Name.Trim())
